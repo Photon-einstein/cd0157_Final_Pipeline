@@ -1,2 +1,25 @@
 # Create Kubernetes cluster, eksctl-demo using the command below:
 eksctl create cluster --name eksctl-demo --nodes=2 --version=1.31 --instance-types=t2.medium --region=us-east-2
+
+# Create Kubernetes cluster, eksctl-demo using the command below:
+eksctl create cluster --name eksctl-demo --nodes=2 --version=1.31 --instance-types=t2.medium --region=us-east-2
+
+## Check the status, Nodes should be ready
+kubectl get nodes
+
+## Find your AWS account ID(opens in a new tab) using the command:
+aws sts get-caller-identity --query Account --output text
+
+## Run this command to create a role, using the trust relationship defined in trust.json:
+aws iam create-role --role-name UdacityFlaskDeployCBKubectlRole --assume-role-policy-document file://trust.json --output text --query 'Role.Arn'
+
+## Next, attach the Policy to the IAM role using the command:
+aws iam put-role-policy --role-name UdacityFlaskDeployCBKubectlRole --policy-name eks-describe --policy-document file://iam-role-policy.json
+
+## First, get the current ConfigMap and save it to a file:
+# Mac/Linux - The file will be created at `/System/Volumes/Data/private/tmp/aws-auth-patch.yml` path
+kubectl get -n kube-system configmap/aws-auth -o yaml > /tmp/aws-auth-patch.yml
+
+## Update your cluster's configmap:
+# Mac/Linux
+kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
