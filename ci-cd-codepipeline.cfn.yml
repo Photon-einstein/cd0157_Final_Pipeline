@@ -40,7 +40,7 @@ Parameters:
 
   GitHubUser:
     Type: String
-    Default: Tiago Sousa
+    Default: Photon-einstein
     Description: TODO - GitHub username or organization
     MinLength: 3
     MaxLength: 100
