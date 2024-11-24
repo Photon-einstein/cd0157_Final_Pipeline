@@ -1,9 +1,6 @@
 # Create Kubernetes cluster, eksctl-demo using the command below:
 eksctl create cluster --name eksctl-demo --nodes=2 --version=1.31 --instance-types=t2.medium --region=us-east-2
 
-# Create Kubernetes cluster, eksctl-demo using the command below:
-eksctl create cluster --name eksctl-demo --nodes=2 --version=1.31 --instance-types=t2.medium --region=us-east-2
-
 ## Check the status, Nodes should be ready
 kubectl get nodes
 
