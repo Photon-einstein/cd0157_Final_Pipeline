@@ -16,6 +16,7 @@ Here is the purpose of each file present in this repo:
 
 
 
+
 ## Run the app on AWS Cloud
 The steps you will follow are:
 1. **Create an EKS Cluster, IAM Role for CodeBuild, and Authenticate the CodeBuild**<br>
