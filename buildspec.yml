@@ -8,8 +8,10 @@ phases:
       python: 3.9
     commands:
       - echo 'Fixing GPG error by adding the missing key and cleaning repositories...'
-      - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E88979FB9B30ACF2 || true
+      # Remove the problematic repository entirely if it's not needed
       - sed -i '/dl.google.com/d' /etc/apt/sources.list || true
+      # Alternatively, add the missing key if the repo is required
+      - wget -qO - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
       - apt-get update
       - echo 'Installing Docker...'
       - apt-get install -y docker.io
