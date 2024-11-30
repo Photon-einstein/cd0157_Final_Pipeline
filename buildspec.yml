@@ -1,6 +1,11 @@
 ---
 version: 0.2
 
+cache:
+  paths:
+    - '/root/.cache/**/*'  # Cache directories like pip cache for Python or npm for Node.js
+    - '/tmp/**/*'           # Any other paths you want to cache
+
 phases:
   install:
     runtime-versions:
