@@ -9,7 +9,7 @@ cache:
 phases:
   install:
     runtime-versions:
-      python: 3.9
+      python: 3.7
     commands:
       - echo 'Fixing GPG error by adding the missing key and cleaning repositories...'
       # Remove the problematic repository entirely if it's not needed
